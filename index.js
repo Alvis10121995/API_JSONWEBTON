@@ -20,12 +20,15 @@ const port = process.env.port || 6000;
 app.use(cors());
 app.use(express.json()); // Middleware para analizar solicitudes JSON
 
+app.get('/',  (req, res) => {
+  res.send("API para autenticar")
+});
 
 app.get('/inicio', function (req, res) {
     res.send("Prueba de edpoind");
     });
-    
-    
+
+
 
 
 
