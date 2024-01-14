@@ -21,7 +21,7 @@ app.use(cors());
 app.use(express.json()); // Middleware para analizar solicitudes JSON
 
 
-app.get('/', function (req, res) {
+app.get('/inicio', function (req, res) {
     res.send("Prueba de edpoind");
     });
     
