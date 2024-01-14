@@ -3,13 +3,47 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
-const Key = "pass2024";
+const mongoose = require('./conexion/conbd'); // Importa el archivo de conexión a MongoDB
+const UserModel = require('./model/modelo'); // Importa el modelo de Usuario
 
-const port = 3000;
+
+ 
+
+// clave para firmar token
+const Key = process.env.Key;
+const port = process.env.port;
+
+
 
 app.use(cors());
 app.use(express.json()); // Middleware para analizar solicitudes JSON
+
+
+
+
+
+
+// edpoind para agregar datos mongo DB
+app.post('/add', function (req, res) {   
+    const { nombre, edad } = req.body; 
+     
+
+    const nuevoUsuario = new UserModel({
+        nombre: nombre,
+        edad: edad,
+      });
+
+
+      
+
+
+      nuevoUsuario.save().then( r => res.send(r)).catch( err => res.send(err))
+
+
+
+})
 
 
 app.post('/login', function (req, res) {
@@ -42,7 +76,7 @@ app.post('/login', function (req, res) {
 
 
 app.get('/', function (req, res) {
-res.send("Welocme to GeeksforGeeks!");
+res.send("Prueba de edpoind");
 });
 
 
