@@ -13,7 +13,7 @@ const UserModel = require('./model/modelo'); // Importa el modelo de Usuario
 
 // clave para firmar token
 const Key = process.env.Key;
-const port = process.env.port;
+const port = process.env.port || 6000;
 
 
 
